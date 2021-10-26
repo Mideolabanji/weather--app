@@ -1,0 +1,23 @@
+#app-container {
+  padding: 20px;
+  border: 1px solid #fff8dc;
+  border-radius: 7px;
+  background-color: #fff8dc;
+}
+#app-container-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+}
+#city-name {
+  font-size: 51px;
+}
+#city-temperature {
+  font-size: 120px;
+  font-weight: 100;
+}
+h5 {
+  margin-bottom: 0px;
+}
+#current-temperature-info {
+  margin-bottom: 18px;
+}
