@@ -2,10 +2,11 @@
   padding: 20px;
   border: 1px solid #fff8dc;
   border-radius: 7px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
   background-color: #fff8dc;
 }
 #app-container-wrapper {
-  max-width: 600px;
+  max-width: 615px;
   margin: 30px auto;
 }
 #city-name {
@@ -20,4 +21,28 @@ h5 {
 }
 #current-temperature-info {
   margin-bottom: 18px;
+}
+#github-link {
+  text-decoration: none;
+}
+#github-link:hover {
+  color: red;
+  text-decoration: underline;
+}
+#degree {
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  bottom: 70px;
+}
+#future-predictions {
+  margin-top: 35px;
+}
+form {
+  text-align: center;
+}
+#weather-description {
+  margin-top: 5px;
+  text-transform: capitalize;
+  font-style: italic;
 }

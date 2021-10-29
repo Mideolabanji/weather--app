@@ -11,19 +11,28 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
       <div id="app-container-wrapper">
         <div id="app-container">
+          <form>
+            <input id="text-input" type="text" placeholder="Type a city..." />
+            <input type="submit" value="search" />
+          </form>
           <h1 id="city-name">Lagos</h1>
-          <h5>Tuesday, 21:49</h5>
+          <h5></h5>
+          <h5 id="weather-description"></h5>
           <div class="row" id="current-temperature-info">
             <div class="col-6">
-              <h1><span id="city-temperature">27</span>°C|F</h1>
-              <div class="col-sm-6">Humidity: 87%</div>
-              <div class="col-sm-6">Wind: 2km/h</div>
+              <h1>
+                <span id="city-temperature"></span>
+                <span id="degree">°C|°F</span>
+              </h1>
+              <div class="col-sm-6" id="humidity"></div>
+              <div class="col-sm-6" id="wind"></div>
             </div>
             <div class="col-6">
               <img
@@ -32,9 +41,9 @@
               />
             </div>
           </div>
-          <div class="row">
+          <div class="row" id="future-predictions">
             <div class="col">
-              Wednesday
+              <h5 id="first-prediction">Wednesday</h5>
               <div>12:00</div>
               <div>
                 <img
@@ -45,7 +54,7 @@
               <div>31°24°</div>
             </div>
             <div class="col">
-              Thursday
+              <h5>Thursday</h5>
               <div>12:00</div>
               <div>
                 <img
@@ -56,7 +65,7 @@
               <div>31°24°</div>
             </div>
             <div class="col">
-              Friday
+              <h5>Friday</h5>
               <div>12:00</div>
               <div>
                 <img
@@ -67,7 +76,7 @@
               <div>31°24°</div>
             </div>
             <div class="col">
-              Saturday
+              <h5>Saturday</h5>
               <div>12:00</div>
               <div>
                 <img
@@ -78,7 +87,7 @@
               <div>32°24°</div>
             </div>
             <div class="col">
-              Sunday
+              <h5>Sunday</h5>
               <div>12:00</div>
               <div>
                 <img
@@ -89,7 +98,7 @@
               <div>31°24°</div>
             </div>
             <div class="col">
-              Monday
+              <h5>Monday</h5>
               <div>12:00</div>
               <div>
                 <img
@@ -101,15 +110,19 @@
             </div>
           </div>
           <br />
-          <div>Last updated on Tuesday, 21:57</div>
+          <div id="last-updated-time">Last updated on Tuesday, 21:57</div>
         </div>
-        <div>
-          <a href="https://github.com/Mideolabanji/weather--app" target="_blank"
+        <small>
+          <a
+            href="https://github.com/Mideolabanji/weather--app"
+            target="_blank"
+            id="github-link"
             >Open souce code</a
           >
           by Olamide Olabanji
-        </div>
+        </small>
       </div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>
