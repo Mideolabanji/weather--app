@@ -65,6 +65,13 @@ let minutes = date.getMinutes();
 let firstPrediction = document.querySelector("#first-prediction");
 firstPrediction.innerHTML = days[date.getDay() + 1];
 
+if (hour < 10) {
+  hour = `0${hour}`;
+}
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+
 let h5 = document.querySelector("h5");
 h5.innerHTML = `${day}, ${hour}:${minutes}`;
 

@@ -43,6 +43,8 @@ form {
 }
 #weather-description {
   margin-top: 5px;
-  text-transform: capitalize;
   font-style: italic;
+}
+#weather-description::first-letter {
+  text-transform: capitalize;
 }
