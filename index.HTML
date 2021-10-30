@@ -19,8 +19,23 @@
       <div id="app-container-wrapper">
         <div id="app-container">
           <form>
-            <input id="text-input" type="text" placeholder="Type a city..." />
-            <input type="submit" value="search" />
+            <div class="row">
+              <div class="col-9">
+                <input
+                  class="form-control"
+                  id="text-input"
+                  type="search"
+                  placeholder="Type a city..."
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  class="btn btn-secondary w-100"
+                  type="submit"
+                  value="Search"
+                />
+              </div>
+            </div>
           </form>
           <h1 id="city-name">Lagos</h1>
           <h5></h5>
