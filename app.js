@@ -1,4 +1,13 @@
 function displayTemperature(response) {
+  let defaultTemperatureIcon = document.querySelector("#temperature-icon");
+  defaultTemperatureIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  defaultTemperatureIcon.setAttribute(
+    "alt",
+    response.data.weather[0].description
+  );
   let defaultTemperature = document.querySelector("#city-temperature");
   defaultTemperature.innerHTML = Math.round(response.data.main.temp);
   let defaultWeatherDescription = document.querySelector(
@@ -12,9 +21,9 @@ function displayTemperature(response) {
   let defaultWindKM = Math.round(response.data.wind.speed);
   defaultWind.innerHTML = `Wind: ${defaultWindKM} km/h`;
 }
-let tempCApiUrl =
+let defaultApiUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=Lagos&appid=21c25c62efe8c3f5cd46c74303b5daaf&units=metric";
-axios.get(tempCApiUrl).then(displayTemperature);
+axios.get(defaultApiUrl).then(displayTemperature);
 
 function search(event) {
   event.preventDefault();
@@ -28,6 +37,12 @@ function search(event) {
   }
 
   function displayTemperature(response) {
+    let temperatureIcon = document.querySelector("#temperature-icon");
+    temperatureIcon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    temperatureIcon.setAttribute("alt", response.data.weather[0].description);
     let temperature = document.querySelector("#city-temperature");
     temperature.innerHTML = Math.round(response.data.main.temp);
     let weatherDescription = document.querySelector("#weather-description");
@@ -61,9 +76,6 @@ let days = [
 let day = days[date.getDay()];
 let hour = date.getHours();
 let minutes = date.getMinutes();
-
-let firstPrediction = document.querySelector("#first-prediction");
-firstPrediction.innerHTML = days[date.getDay() + 1];
 
 if (hour < 10) {
   hour = `0${hour}`;

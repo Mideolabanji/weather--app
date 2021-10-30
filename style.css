@@ -6,7 +6,7 @@
   background-color: #fff8dc;
 }
 #app-container-wrapper {
-  max-width: 615px;
+  max-width: 630px;
   margin: 30px auto;
 }
 #city-name {
@@ -47,4 +47,7 @@ form {
 }
 #weather-description::first-letter {
   text-transform: capitalize;
+}
+#temperature-icon {
+  width: 50%;
 }
