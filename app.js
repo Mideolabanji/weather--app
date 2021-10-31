@@ -20,6 +20,7 @@ function displayTemperature(response) {
   let defaultWind = document.querySelector("#wind");
   let defaultWindKM = Math.round(response.data.wind.speed);
   defaultWind.innerHTML = `Wind: ${defaultWindKM} km/h`;
+  celciusTemperature = response.data.main.temp;
 }
 let defaultApiUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=Lagos&appid=21c25c62efe8c3f5cd46c74303b5daaf&units=metric";
@@ -53,6 +54,8 @@ function search(event) {
     let wind = document.querySelector("#wind");
     let windKM = Math.round(response.data.wind.speed);
     wind.innerHTML = `Wind: ${windKM} km/h`;
+
+    celciusTemperature = response.data.main.temp;
   }
   let apiKey = "21c25c62efe8c3f5cd46c74303b5daaf";
   let city = `${textInput.value}`;
@@ -60,8 +63,32 @@ function search(event) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  celciusLink.classList.remove("active-link");
+  fahrenheitLink.classList.add("active-link");
+  let fahrenheitTemperature = document.querySelector("#city-temperature");
+  fahrenheitTemperature.innerHTML = Math.round(
+    (celciusTemperature * 9) / 5 + 32
+  );
+}
+let celciusTemperature = null;
+
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  celciusLink.classList.add("active-link");
+  fahrenheitLink.classList.remove("active-link");
+  let celciusTemperatureElement = document.querySelector("#city-temperature");
+  celciusTemperatureElement.innerHTML = Math.round(celciusTemperature);
+}
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
 
 let date = new Date();
 let days = [
