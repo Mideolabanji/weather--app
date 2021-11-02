@@ -1,11 +1,12 @@
 h5 {
   margin-bottom: 0px;
+  font-weight: 400;
 }
 form {
   text-align: center;
 }
 #app-container-wrapper {
-  max-width: 630px;
+  max-width: 600px;
   margin: 30px auto;
 }
 #app-container {
@@ -38,8 +39,14 @@ form {
   position: relative;
   bottom: 70px;
 }
-#future-predictions {
+#weather-forecast {
   margin-top: 25px;
+}
+#minimum-forecast-temperature {
+  opacity: 0.6;
+}
+#maximum-forecast-temperature {
+  font-weight: 500;
 }
 #weather-description {
   margin-top: 5px;
