@@ -21,10 +21,18 @@ function displayTemperature(response) {
   let defaultWindKM = Math.round(response.data.wind.speed);
   defaultWind.innerHTML = `Wind: ${defaultWindKM} km/h`;
   celciusTemperature = response.data.main.temp;
+
+  forecastData(response.data.coord);
 }
 let defaultApiUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=Lagos&appid=21c25c62efe8c3f5cd46c74303b5daaf&units=metric";
 axios.get(defaultApiUrl).then(displayTemperature);
+
+function forecastData(coordinate) {
+  let defaultForecastAPIKey = `21c25c62efe8c3f5cd46c74303b5daaf`;
+  let defaultForecastAPIUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&appid=${defaultForecastAPIKey}&units=metric`;
+  axios.get(defaultForecastAPIUrl).then(displayForecast);
+}
 
 function search(event) {
   event.preventDefault();
@@ -82,7 +90,7 @@ function displayCelciusTemperature(event) {
   celciusTemperatureElement.innerHTML = Math.round(celciusTemperature);
 }
 
-function displayForecast() {
+function displayForecast(response) {
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -114,8 +122,6 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemperature);
-
-displayForecast();
 
 let date = new Date();
 let days = [
