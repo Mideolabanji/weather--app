@@ -74,12 +74,6 @@ function displayFahrenheitTemperature(event) {
 }
 let celciusTemperature = null;
 
-let form = document.querySelector("form");
-form.addEventListener("submit", search);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
 function displayCelciusTemperature(event) {
   event.preventDefault();
   celciusLink.classList.add("active-link");
@@ -87,8 +81,41 @@ function displayCelciusTemperature(event) {
   let celciusTemperatureElement = document.querySelector("#city-temperature");
   celciusTemperatureElement.innerHTML = Math.round(celciusTemperature);
 }
+
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+                <h5>${day}</h5>
+                <div>12:00</div>
+                <div>
+                  <img
+                    src="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png"
+                    alt="cloudy"
+                  />
+                </div>
+                <span id="maximum-forecast-temperature">31°</span>
+                <span id="minimum-forecast-temperature">24°</span>
+              </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", search);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemperature);
+
+displayForecast();
 
 let date = new Date();
 let days = [

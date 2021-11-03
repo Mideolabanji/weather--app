@@ -39,7 +39,7 @@ form {
   position: relative;
   bottom: 70px;
 }
-#weather-forecast {
+.weather-forecast {
   margin-top: 25px;
 }
 #minimum-forecast-temperature {
