@@ -2,7 +2,7 @@ function displayTemperature(response) {
   let defaultTemperatureIcon = document.querySelector("#temperature-icon");
   defaultTemperatureIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   defaultTemperatureIcon.setAttribute(
     "alt",
@@ -91,14 +91,15 @@ function displayCelciusTemperature(event) {
 }
 
 function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
+  let forecastData = response.data.daily;
+  forecastData.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `<div class="col">
-                <h5>${day}</h5>
+                <h5>${forecastDay.dt}</h5>
                 <div>12:00</div>
                 <div>
                   <img
