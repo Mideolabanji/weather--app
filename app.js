@@ -1,3 +1,12 @@
+function currentLocation(position) {
+  console.log(position.coords.latitude);
+  navigator.geolocation.getCurrentPosition(currentLocation);
+  let locationApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.latitude}&units=metric&appid=21c25c62efe8c3f5cd46c74303b5daaf`;
+  axios.get(locationApiUrl).then(displayTemperature);
+}
+let currentButton = document.querySelector("#current-btn");
+currentButton.addEventListener("click", currentLocation);
+
 function displayTemperature(response) {
   let defaultTemperatureIcon = document.querySelector("#temperature-icon");
   defaultTemperatureIcon.setAttribute(
