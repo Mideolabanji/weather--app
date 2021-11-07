@@ -5,16 +5,19 @@ h5 {
 form {
   text-align: center;
 }
+body {
+  background-color: whitesmoke;
+}
 #app-container-wrapper {
   max-width: 600px;
   margin: 30px auto;
 }
 #app-container {
   padding: 20px;
-  border: 1px solid #fff8dc;
+  border: 1px solid #fff;
   border-radius: 7px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-  background-color: #fff8dc;
+  background-color: #fff;
 }
 #city-name {
   font-size: 51px;
@@ -72,4 +75,10 @@ form {
 }
 .last-updated {
   font-weight: 400;
+}
+.forecast-img {
+  margin-left: -33px;
+}
+.forecast-data {
+  padding: 0px 20px;
 }
