@@ -64,6 +64,7 @@ function search(event) {
     wind.innerHTML = `Wind: ${windKM} km/h`;
 
     celciusTemperature = response.data.main.temp;
+    forecastData(response.data.coord);
   }
   let apiKey = "21c25c62efe8c3f5cd46c74303b5daaf";
   let city = `${textInput.value}`;
@@ -90,26 +91,40 @@ function displayCelciusTemperature(event) {
   celciusTemperatureElement.innerHTML = Math.round(celciusTemperature);
 }
 
+function formatDay(dt) {
+  let date = new Date(dt * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let forecastData = response.data.daily;
-  forecastData.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-                <h5>${forecastDay.dt}</h5>
-                <div>12:00</div>
-                <div>
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+        
+                <h5>${formatDay(forecastDay.dt)}</h5>
                   <img
-                    src="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png"
-                    alt="cloudy"
+                    src="https://openweathermap.org/img/wn/${
+                      forecastDay.weather[0].icon
+                    }@2x.png"
+                    alt=""
                   />
+                <div class="forecast-temp">
+                <span id="maximum-forecast-temperature">${Math.round(
+                  forecastDay.temp.max
+                )}°</span>
+                <span id="minimum-forecast-temperature">${Math.round(
+                  forecastDay.temp.min
+                )}°</span>
                 </div>
-                <span id="maximum-forecast-temperature">31°</span>
-                <span id="minimum-forecast-temperature">24°</span>
               </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
@@ -145,8 +160,5 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-let h5 = document.querySelector("h5");
-h5.innerHTML = `${day}, ${hour}:${minutes}`;
-
-let lastUpdatedTime = document.querySelector("#last-updated-time");
-lastUpdatedTime.innerHTML = `Last updated on ${day}, ${hour}:${minutes}`;
+let h6 = document.querySelector("h6");
+h6.innerHTML = `Last updated: ${day} ${hour}:${minutes}`;
