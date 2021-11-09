@@ -44,6 +44,11 @@ function search(event) {
     h1.innerHTML = null;
     alert("Please type a city");
   }
+
+  let apiKey = "21c25c62efe8c3f5cd46c74303b5daaf";
+  let city = `${textInput.value}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
 }
 
 function displayTemperature(response) {
@@ -69,12 +74,6 @@ function displayTemperature(response) {
   celciusTemperature = response.data.main.temp;
   forecastData(response.data.coord);
 }
-
-let apiKey = "21c25c62efe8c3f5cd46c74303b5daaf";
-let textInput = document.querySelector("#text-input");
-let city = `${textInput.value}`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayTemperature);
 
 function currentLocation(position) {
   let locationApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.latitude}&units=metric&appid=21c25c62efe8c3f5cd46c74303b5daaf`;
@@ -143,6 +142,19 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
 }
+
+function updateBackground() {
+  let date = new Date();
+  let hour = date.getHours();
+  let body = document.querySelector("#app-container");
+  let bstyle = body.style;
+
+  if (hour > 20) {
+    bstyle.backgroundColor = "#726b68";
+    bstyle.border = "1px solid #726b68";
+  }
+}
+updateBackground();
 
 let form = document.querySelector("form");
 form.addEventListener("submit", search);
