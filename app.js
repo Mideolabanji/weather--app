@@ -1,4 +1,4 @@
-function displayTemperature(response) {
+function displayDefaultTemperature(response) {
   let defaultTemperatureIcon = document.querySelector("#temperature-icon");
   defaultTemperatureIcon.setAttribute(
     "src",
@@ -26,7 +26,7 @@ function displayTemperature(response) {
 }
 let defaultApiUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=Lagos&appid=21c25c62efe8c3f5cd46c74303b5daaf&units=metric";
-axios.get(defaultApiUrl).then(displayTemperature);
+axios.get(defaultApiUrl).then(displayDefaultTemperature);
 
 function forecastData(coordinate) {
   let defaultForecastAPIKey = `21c25c62efe8c3f5cd46c74303b5daaf`;
@@ -52,7 +52,7 @@ function displayTemperature(response) {
   let temperatureIcon = document.querySelector("#temperature-icon");
   temperatureIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   temperatureIcon.setAttribute("alt", response.data.weather[0].description);
   let temperature = document.querySelector("#city-temperature");
