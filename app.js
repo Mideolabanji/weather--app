@@ -149,7 +149,7 @@ function updateBackground() {
   let body = document.querySelector("#app-container");
   let bstyle = body.style;
 
-  if (hour > 20) {
+  if (hour >= 20) {
     bstyle.backgroundColor = "#726b68";
     bstyle.border = "1px solid #726b68";
   }
