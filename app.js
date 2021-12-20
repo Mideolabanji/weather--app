@@ -153,6 +153,11 @@ function updateBackground() {
     bstyle.backgroundColor = "#726b68";
     bstyle.border = "1px solid #726b68";
   }
+
+  if (hour <= 4) {
+    bstyle.backgroundColor = "#726b68";
+    bstyle.border = "1px solid #726b68";
+  }
 }
 updateBackground();
 
