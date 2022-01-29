@@ -84,3 +84,17 @@ body {
 .forecast-data {
   padding: 0px 20px;
 }
+
+@media (max-width: 576px) {
+  #city-temperature {
+    font-size: 105px;
+  }
+
+  #degree {
+    bottom: 62px;
+  }
+
+  #temperature-icon {
+    width: 100%;
+  }
+}
